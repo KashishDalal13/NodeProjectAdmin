@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%-include('topbar')%>
+    <div class="post-container">
+        <table class="table-custom">
+            <thead>
+                <tr>
+                    <th colspan="8" class="table-heading">User Details</th>
+                </tr>
+                <tr>
+                  <th scope="col">User Name</th>
+                  <th scope="col">User EmailID</th>
+                  <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <%for(let i=0; i<user.length; i++) { %>
+            <tbody>
+                <tr>
+                  <td><%=user[i].username %></td>
+                  <td><%=user[i].email %></td>
+                  <td>
+                  <div class="d-flex">
+                    <form action="/deleteUser" method="post">
+                        <input type="hidden" name="email" value="<%=user[i].email%>">
+                        <button class="delete-btn">Delete</button>
+                    </form>
+                  </div>
+                </td>
+                </tr>
+                <% } %>
+              </tbody>
+        </table>
+    </div>
+</body>
+</html>
